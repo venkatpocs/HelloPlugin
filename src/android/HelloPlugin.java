@@ -15,7 +15,8 @@ public class HelloPlugin extends CordovaPlugin {
 			if (ACTION_ADD_CALLBACK_METHOD.equals(action)) {
 				JSONObject arg_object = args.getJSONObject(0);
 				System.out.println("Calling Native Method:Title:"+ arg_object.getString("title"));
-				callbackContext.success();
+			      String myDeviceModel = android.os.Build.MODEL;
+				callbackContext.success(myDeviceModel);
 				return true;
 			}
 			callbackContext.error("Invalid action");
