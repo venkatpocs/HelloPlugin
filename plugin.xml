@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="com.amadeus.plugin.HelloPlugin"
+        version="1.0.0">
+
+    <name>HelloPlugin</name>
+
+    <js-module src="www/HelloPlugin.js" name="HelloPlugin">
+        <clobbers target="HelloPlugin" />
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <activity android:name="com.amadeus.plugin.HelloPlugin"
+                      android:label="@string/app_name">
+                <intent-filter></intent-filter>
+            </activity>
+        </config-file>
+
+    <config-file target="res/xml/config.xml" parent="widget">
+        <feature name="HelloPlugin">
+            <param name="android-package" value="com.amadeus.plugin.HelloPlugin" />
+        </feature>
+    </config-file>
+
+    <source-file src="src/android/HelloPlugin.java"
+        target-dir="src/com/amadeus/plugin"/>
+    </platform>
+
+    <!-- ios -->
+    <platform name="ios">
+        <config-file target="res/xml/config.xml" parent="widget">
+            <feature name="HelloPlugin">
+                <param name="ios-package" value="com.amadeus.plugin.HelloPlugin" />
+            </feature>
+        </config-file>
+
+        <header-file src="src/ios/HelloPlugin.h" />
+        <source-file src="src/ios/HelloPlugin.m" />
+    </platform>
+</plugin>
